@@ -10,8 +10,12 @@ def calcular_area_total():
     largura = int(input("Digite a largura da sala: "))
     altura = int(input("Digite a altura da sala: "))
 
-    area_total = comprimento + 2 * largura + 2 * altura
-    
+    A1 = comprimento * largura
+    A2 = comprimento * altura
+    A3 = largura * altura
+
+    area_total = A1 + 2 * A2 + 2 * A3
+
     print(f"A área total é: {area_total} m²")
 
 def calcular_area_triangulo():
