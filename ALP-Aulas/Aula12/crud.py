@@ -21,113 +21,109 @@ while resp != '0':
     print()
     print("Módulo de Cadastro")
     print()
-    nome  = str(input("Nome  : "))
-    fone  = str(input("Fone  : "))
-    email = str(input("E-mail: "))
-    dnasc = str(input("Nasc  : "))
-    lista_nomes += [nome]
-    lista_fones += [fone]
-    lista_dnasc += [dnasc]
-    lista_email += [email]
+    
+    nome = str(input("Digite o seu nome: "))
+    fones = str(input("Digite o seu telefone: "))
+    dnasc = str(input("Digite a sua data de nascimento: "))
+    email = str(input("Digite o seu email: "))
+    lista_nomes += nome
+    lista_fones += fones 
+    lista_dnasc += dnasc
+    lista_email += email
+    
     print()
   elif resp == '2':
     print()
     print("Módulo de Pesquisa")
     print()
-    nome = str(input("Qual o nome do contato? "))
-    tam = len(lista_nomes)
-    pos = 0
-    achou = False
-    while (pos < tam) and (not achou):
-      if nome == lista_nomes[pos]:
-        achou = True
-      else:
-        pos += 1
-    if achou:
-      print("Nome : ", lista_nomes[pos])
-      print("Fone : ", lista_fones[pos])
-      print("Nasc : ", lista_dnasc[pos])
-      print("Email: ", lista_email[pos])
-    else:
-      print("%s não é um contato da agenda"%nome)
 
+    pesquisa = str(input("Qual usuário você está procurando? "))
+    achou = False
+    pos = 0
+
+    for i in range(len(lista_nomes)):
+      if pesquisa == lista_nomes[i]:
+          achou = True
+          pos = i
+      else:
+          print("Este usuário não está na lista!!")
+
+    if achou:
+      print(lista_nomes[pos])
+      print(lista_fones[pos])
+      print(lista_dnasc[pos])
+      print(lista_email[pos])
     print()
   elif resp == '3':
     print()
     print("Módulo de Atualização")
     print()
 
-    update_nome = str(input("Qual o nome do contato? "))
-    tam = len(lista_nomes)
+    atualizar_nome = str(input("Informe o usuário que você quer atualizar: "))
+    achou = False
     pos = 0
 
-    achou = False
-    while (pos < tam) and (not achou):
-      if update_nome == lista_nomes[pos]:
+    for i in range(len(lista_nomes)):
+      if atualizar_nome == lista_nomes[i]:
         achou = True
+        pos = i
       else:
-        pos += 1
-      
+        print()
+
     if achou:
-      print("Nome : ", lista_nomes[pos])
-      print("Fone : ", lista_fones[pos])
-      print("Nasc : ", lista_dnasc[pos])
-      print("Email: ", lista_email[pos])
+      print(lista_nomes[pos])
+      print(lista_fones[pos])
+      print(lista_dnasc[pos])
+      print(lista_email[pos])
+      print()
 
-      print("Qual informação deseja atualizar?")
-      print("1 - Nome")
-      print("2 - Fone")
-      print("3 - Nasc")
-      print("4 - Email")
-      opcao = input("Escolha sua opção: ")
+      nome = str(input("Digite o seu nome: "))
+      fones = str(input("Digite o seu telefone: "))
+      dnasc = str(input("Digite a sua data de nascimento: "))
+      email = str(input("Digite o seu email: "))
 
-      if opcao == '1':
-        lista_nomes[pos] = str(input("Novo nome: "))
-      elif opcao == '2':
-        lista_fones[pos] = str(input("Novo fone: "))
-      elif opcao == '3':
-        lista_dnasc[pos] = str(input("Nova data de nascimento: "))
-      elif opcao == '4':
-        lista_email[pos] = str(input("Novo email: "))
+      lista_nomes[pos] = nome
+      lista_fones[pos] = fones 
+      lista_dnasc[pos] = dnasc
+      lista_email[pos] = email
 
     print()
   elif resp == '4':
     print()
     print("Módulo de Exclusão")
-    print()
 
-    delete_nome = str(input("Qual o nome do contato? "))
-    tam = len(lista_nomes)
+    deletar_nome = str(input("Informe o usuário que você quer deletar: "))
+    achou = True
     pos = 0
-    achou = False
-    while (pos < tam) and (not achou):
-      if delete_nome == lista_nomes[pos]:
-        achou = True
-      else:
-        pos += 1
 
+    for i in range(len(lista_nomes)):
+      if deletar_nome == lista_nomes[i]:
+        achou = True
+        pos = i
+      else:
+        print()
+          
     if achou:
       del lista_nomes[pos]
       del lista_fones[pos]
       del lista_dnasc[pos]
       del lista_email[pos]
-      print("%s foi excluído da agenda"%delete_nome)
-    else:
-      print("%s não é um contato da agenda"%delete_nome)
+    
+    print()
 
     print()
   elif resp == '5':
     print()
     print("Módulo de Relatório")
     print()
-    tam = len(lista_nomes)
-    for i in range(tam):
-      print("Nome : ", lista_nomes[i])
-      print("Fone : ", lista_fones[i])
-      print("Nasc : ", lista_dnasc[i])
-      print("Email: ", lista_email[i])
+    
+    for i in range(len(lista_nomes)):
+
+      print(lista_nomes[i])
+      print(lista_fones[i])
+      print(lista_dnasc[i])
+      print(lista_email[i])
       print()
-    print()
 
   elif resp == '0':
     break

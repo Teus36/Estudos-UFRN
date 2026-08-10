@@ -1,28 +1,20 @@
-import random
+k = int(input("Digite o tamanho da sua lista:"))
+idades = []
 
-palavras = ["gato", "casa", "carro"]
+for i in range(k):
+  idade = int(input("Digite a idade: "))
+  idades.append(idade)
 
-random.shuffle(palavras)
+media = sum(idades) / len(idades)
+amplitude = max(idades) - min(idades)
 
-count = 0
+idades_ordem = idades.sort()
+pos = 0
 
-while True:
-
-    advinhar = input("Digite uma palavra: ").lower()
-    indice = int(input("Digite o índice: "))
-
-    if advinhar in palavras:
-
-        if indice == palavras.index(advinhar):
-            print("Acertou!")
-            count += 1
-
-        else:
-            print("Errou o índice")
-
-    else:
-        print("Palavra não existe")
-
-    if count == 3:
-        print("Você venceu")
-        break
+for i in range(len(idades_ordem)):
+    if len(idades_ordem) % 2 == 0:
+        pos1 = idades_ordem[len(idades_ordem)/2]
+        pos2 = idades_ordem[len(idades_ordem)/2 + 1]
+        mediana = pos1 + pos2/2
+        
+print(mediana)
